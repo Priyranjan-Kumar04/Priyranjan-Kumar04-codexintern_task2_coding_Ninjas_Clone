@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Coding-Ninja-p.1/static/css/main.0caa630d.css",
+    "main.js": "/Coding-Ninja-p.1/static/js/main.e69ffb05.js",
+    "index.html": "/Coding-Ninja-p.1/index.html",
+    "main.0caa630d.css.map": "/Coding-Ninja-p.1/static/css/main.0caa630d.css.map",
+    "main.e69ffb05.js.map": "/Coding-Ninja-p.1/static/js/main.e69ffb05.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0caa630d.css",
+    "static/js/main.e69ffb05.js"
+  ]
+}
