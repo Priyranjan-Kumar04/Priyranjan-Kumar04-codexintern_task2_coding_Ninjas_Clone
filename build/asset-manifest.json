@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Coding-Ninja-clone/static/css/main.0caa630d.css",
-    "main.js": "/Coding-Ninja-clone/static/js/main.e69ffb05.js",
+    "main.js": "/Coding-Ninja-clone/static/js/main.5a001a37.js",
     "index.html": "/Coding-Ninja-clone/index.html",
     "main.0caa630d.css.map": "/Coding-Ninja-clone/static/css/main.0caa630d.css.map",
-    "main.e69ffb05.js.map": "/Coding-Ninja-clone/static/js/main.e69ffb05.js.map"
+    "main.5a001a37.js.map": "/Coding-Ninja-clone/static/js/main.5a001a37.js.map"
   },
   "entrypoints": [
     "static/css/main.0caa630d.css",
-    "static/js/main.e69ffb05.js"
+    "static/js/main.5a001a37.js"
   ]
 }
