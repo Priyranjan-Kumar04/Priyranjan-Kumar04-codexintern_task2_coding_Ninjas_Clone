@@ -9,7 +9,7 @@ const Certifications = () => {
   const [selectedDuration, setSelectedDuration] = useState('All');
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const certifications = [
+  const certifications = useMemo(() => [
     {
       id: 1,
       title: "IIT Roorkee - Full Stack Development",
@@ -82,7 +82,7 @@ const Certifications = () => {
       features: ["Google Certificate", "Analytics", "AdWords", "Global Recognition"],
       description: "Professional digital marketing certification from Google"
     }
-  ];
+  ], []);
 
   const providers = ['All', 'IIT Roorkee', 'IIT Madras', 'IIT Delhi', 'IBM', 'Google'];
   const levels = ['All', 'Beginner', 'Intermediate', 'Advanced'];
