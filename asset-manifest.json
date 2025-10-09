@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Priyranjan-Kumar04-codexintern_task2_coding_Ninjas_Clone/static/css/main.02f1a778.css",
-    "main.js": "/Priyranjan-Kumar04-codexintern_task2_coding_Ninjas_Clone/static/js/main.17fbd39f.js",
+    "main.js": "/Priyranjan-Kumar04-codexintern_task2_coding_Ninjas_Clone/static/js/main.7009d1fd.js",
     "index.html": "/Priyranjan-Kumar04-codexintern_task2_coding_Ninjas_Clone/index.html",
     "main.02f1a778.css.map": "/Priyranjan-Kumar04-codexintern_task2_coding_Ninjas_Clone/static/css/main.02f1a778.css.map",
-    "main.17fbd39f.js.map": "/Priyranjan-Kumar04-codexintern_task2_coding_Ninjas_Clone/static/js/main.17fbd39f.js.map"
+    "main.7009d1fd.js.map": "/Priyranjan-Kumar04-codexintern_task2_coding_Ninjas_Clone/static/js/main.7009d1fd.js.map"
   },
   "entrypoints": [
     "static/css/main.02f1a778.css",
-    "static/js/main.17fbd39f.js"
+    "static/js/main.7009d1fd.js"
   ]
 }
