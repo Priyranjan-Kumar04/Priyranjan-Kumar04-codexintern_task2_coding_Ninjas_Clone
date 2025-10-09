@@ -2,7 +2,7 @@
   "name": "coding-ninjas-clone",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://priyranjan-kumar04.github.io/Coding-Ninja-clone",
+  "homepage": "https://priyranjan-kumar04.github.io/codexintern_task2_codingNinjasClone",
   "dependencies": {
     "@react-oauth/google": "^0.12.2",
     "@testing-library/jest-dom": "^5.17.0",
@@ -23,6 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "node -e \"require('fs').copyFileSync('build/index.html','build/404.html')\"",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
