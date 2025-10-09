@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const EnrollmentPlan = () => {
@@ -70,27 +70,60 @@ const EnrollmentPlan = () => {
     });
   };
 
-  const handleEnrollment = (e) => {
-    e.preventDefault();
+  // Helper to perform enrollment programmatically or from form submit
+  const performEnrollment = () => {
     if (!selectedPlan) {
       alert('Please select a weekly plan');
       return;
     }
-    
+
     const enrollmentData = {
       course: course,
       plan: weeklyPlans.find(plan => plan.id === selectedPlan),
       personalInfo: personalInfo,
       enrollmentDate: new Date().toISOString()
     };
-    
-    // Store enrollment data in localStorage for demo purposes
+
     const existingEnrollments = JSON.parse(localStorage.getItem('enrollments') || '[]');
     existingEnrollments.push(enrollmentData);
     localStorage.setItem('enrollments', JSON.stringify(existingEnrollments));
-    
+
     navigate('/enrollment-success', { state: { enrollmentData } });
   };
+
+  const handleEnrollment = (e) => {
+    e.preventDefault();
+    performEnrollment();
+  };
+
+  // Auto-enroll flow when navigated with state { autoEnroll: true }
+  const autoRunRef = useRef(false);
+  useEffect(() => {
+    if (!course) return;
+    if (location.state && location.state.autoEnroll && !autoRunRef.current) {
+      autoRunRef.current = true;
+
+      // Preselect a recommended plan if available, else fallback
+      const recommended = weeklyPlans.find(p => p.recommended) || weeklyPlans[0];
+      setSelectedPlan(recommended.id);
+
+      // Prefill the form with demo values only if empty
+      setPersonalInfo(prev => ({
+        firstName: prev.firstName || 'John',
+        lastName: prev.lastName || 'Doe',
+        email: prev.email || 'john.doe@example.com',
+        phone: prev.phone || '9999999999',
+        experience: prev.experience || 'beginner'
+      }));
+
+      // Give React a tick to apply state, then enroll
+      const timer = setTimeout(() => {
+        performEnrollment();
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.state, course]);
 
   if (!course) {
     return (

@@ -21,6 +21,28 @@ const Offerings = () => {
     }
   ];
 
+  const getCourseDataFromBootcamp = (course) => {
+    const isWeb = /web/i.test(course.title);
+    const isAnalytics = /analytics/i.test(course.title);
+    const image = isWeb
+      ? 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=250&fit=crop'
+      : isAnalytics
+      ? 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop'
+      : 'https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=400&h=250&fit=crop';
+
+    return {
+      id: `bootcamp-${course.title.replace(/\s+/g, '-').toLowerCase()}`,
+      title: course.title,
+      description: `Join our ${course.title} program with live classes and industry projects`,
+      duration: course.duration,
+      level: 'Beginner to Advanced',
+      category: 'Job Bootcamp',
+      price: isWeb ? '₹49,999' : '₹39,999',
+      image,
+      features: ['Live Classes', 'Industry Projects', 'Job Assistance', 'Certification']
+    };
+  };
+
   const iitCertifications = [
     {
       title: "PG Certification in Data Analytics with GenAI",
@@ -117,47 +139,47 @@ const Offerings = () => {
                     {course.learners}
                   </div>
                 </div>
-                <Link to="/bootcamp" className="btn-primary w-full text-center block">
+                <Link to={`/enrollment-plan`} state={{ course: getCourseDataFromBootcamp(course) }} className="btn-primary w-full text-center block">
                   Enroll Now
                 </Link>
               </div>
             ))}
           </div>
         </div>
-
-        {/* IIT Certifications Section */}
-        <div className="mb-16">
-          <h3 className="text-3xl font-bold text-gray-800 mb-8 text-center">IIT Certifications</h3>
-          <div className="grid md:grid-cols-2 gap-8">
-            {iitCertifications.map((cert, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-8 card-hover">
-                <div className="mb-4">
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-                    {cert.category}
-                  </span>
-                </div>
-                <h4 className="text-xl font-bold text-gray-800 mb-3">{cert.title}</h4>
-                <div className="space-y-2 mb-6">
-                  <div className="flex items-center text-gray-600">
-                    <svg className="w-5 h-5 mr-2 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4zm0 2h12v8H4V6z" clipRule="evenodd" />
-                    </svg>
-                    {cert.institute}
-                  </div>
-                  <div className="flex items-center text-gray-600">
-                    <svg className="w-5 h-5 mr-2 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-                    </svg>
-                    {cert.duration}
-                  </div>
-                </div>
-                <Link to="/certifications" className="btn-secondary w-full text-center block">
-                  Learn More
-                </Link>
+      </div>
+      {/* IIT Certifications Section */}
+      <div className="mb-16">
+        <h3 className="text-3xl font-bold text-gray-800 mb-8 text-center">IIT Certifications</h3>
+        <div className="grid md:grid-cols-2 gap-8">
+          {iitCertifications.map((cert, index) => (
+            <div key={index} className="bg-white rounded-xl shadow-lg p-8 card-hover">
+              <div className="mb-4">
+                <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                  {cert.category}
+                </span>
               </div>
-            ))}
-          </div>
+              <h4 className="text-xl font-bold text-gray-800 mb-3">{cert.title}</h4>
+              <div className="space-y-2 mb-6">
+                <div className="flex items-center text-gray-600">
+                  <svg className="w-5 h-5 mr-2 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4zm0 2h12v8H4V6z" clipRule="evenodd" />
+                  </svg>
+                  {cert.institute}
+                </div>
+                <div className="flex items-center text-gray-600">
+                  <svg className="w-5 h-5 mr-2 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                  </svg>
+                  {cert.duration}
+                </div>
+              </div>
+              <Link to="/certifications" className="btn-secondary w-full text-center block">
+                Learn More
+              </Link>
+            </div>
+          ))}
         </div>
+      </div>
 
         {/* New Launches Section */}
         <div>
@@ -198,7 +220,6 @@ const Offerings = () => {
             ))}
           </div>
         </div>
-      </div>
     </section>
   );
 };
