@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const EnrollmentSuccess = () => {
   const location = useLocation();
-  const navigate = useNavigate();
   const { enrollmentData } = location.state || {};
   const [enrollments, setEnrollments] = useState([]);
 
